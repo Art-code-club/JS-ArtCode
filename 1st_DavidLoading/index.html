@@ -5,38 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    
     <title>Document</title>
 </head>
 <body>
     <canvas id="can" width="1920" height="1080"></canvas>
-      <img src="images/wall.jpeg" width="100" height="100" alt=""/>
       <P>bye</P>
 </body>
 <script type="text/javascript">
-    
-
-    // 1. canvas 엘리먼트를 취득한다.
-    var canvas = document.getElementById('can');
-    // 2. 2d모드의 그리기 객체를 취득한다. => 이 객체를 통해 canvas에 그림을 그릴 수 있다.
-    var ctx = canvas.getContext('2d');
-    
-
+    init();
+    var Palmimg = new Image();   // Create new img element
     var Davidimg = new Image();   // Create new img element
     var Wallimg = new Image();   // Create new img element
-    var Palmimg = new Image();   // Create new img element
-    Davidimg.src = '/Users/imtaeyeong/Downloads/js공부/JS-ArtCode/1st_DavidLoading/images/david.png'; // Set source path
-    Wallimg.src = '/Users/imtaeyeong/Downloads/js공부/JS-ArtCode/1st_DavidLoading/images/wall.jpeg'; // Set source path
-    Palmimg.src = '/Users/imtaeyeong/Downloads/js공부/JS-ArtCode/1st_DavidLoading/images/palm.png'; // Set source path
-    Palmimg.onload = function(){ 
-        ctx.drawImage(Palmimg, 300, 300,500,500);
+
+    function init(){
+        setInterval(draw, 500);
+        
+    }    
+
+    function draw(){
+
+        // 1. canvas 엘리먼트를 취득한다.
+        var canvas = document.getElementById('can');
+        // 2. 2d모드의 그리기 객체를 취득한다. => 이 객체를 통해 canvas에 그림을 그릴 수 있다.
+        var ctx = canvas.getContext('2d');
+        
+        
+        Davidimg.src = 'images/david.png'; // Set source path
+        Wallimg.src = 'images/wall2.jpeg'; // Set source path
+        Palmimg.src = 'images/palm.png'; // Set source path
+        
+        var time = new Date();
+        
+        Davidimg.onload = function(){ 
+            ctx.drawImage(Davidimg, 700,100,200,200 );
+        }
+        //벽 그림 
+        Wallimg.onload = function(){ 
+            
+            //ctx.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+            ctx.translate(700,100);
+            ctx.drawImage(Wallimg, 700, 300);
+        }
+
+        Palmimg.onload = function(){ 
+            ctx.save();
+            ctx.drawImage(Palmimg, 100, 300,500,500);
     }
-    Davidimg.onload = function(){ 
-        ctx.drawImage(Davidimg, 700, 100,200,200 );
-    }
-    Wallimg.onload = function(){ 
-        ctx.drawImage(Wallimg, 700, 300,400,400);
-    }
-    
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+
+   
+}
   
 </script>
 </html>
