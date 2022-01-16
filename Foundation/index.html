@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="can" width="1920" height="1080"></canvas>
+      <P>bye</P>
+</body>
+<script type="text/javascript">
+    init();
+    var Palmimg = new Image();   // Create new img element
+    var Davidimg = new Image();   // Create new img element
+    var Wallimg = new Image();   // Create new img element
+
+    function init(){
+        var add =10;
+        var sec= 10;
+        for(var i=0; i<2; i++)
+        var interval = setInterval(function(){
+
+            
+        // 1. canvas 엘리먼트를 취득한다.
+        var canvas = document.getElementById('can');
+        // 2. 2d모드의 그리기 객체를 취득한다. => 이 객체를 통해 canvas에 그림을 그릴 수 있다.
+        var ctx = canvas.getContext('2d');
+        
+        
+        Davidimg.src = 'images/david.png'; // Set source path
+        Wallimg.src = 'images/wall2.jpeg'; // Set source path
+        Palmimg.src = 'images/palm.png'; // Set source path
+        
+        var time = new Date();
+
+        console.log(sec);
+        
+        Davidimg.onload = function(){ 
+            ctx.drawImage(Davidimg, sec+690,100,200,200 );
+        }
+        //벽 그림 
+        Wallimg.onload = function(){ 
+            if(rot)
+            ctx.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+            //ctx.translate(700,100);
+            //Wallimg.rotate(((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+            ctx.drawImage(Wallimg, 700, 300);
+        }
+
+        Palmimg.onload = function(){ 
+            ctx.save();
+            ctx.drawImage(Palmimg, 100, 300,500,500);
+        }
+        
+        ctx.clearRect(0,0,canvas.width, canvas.height);    
+        
+        
+        var dir= true;
+        var rot= false;
+        if(sec ==220){
+            dir =true;
+            rot =true;
+        }
+        else if(sec== 0){
+            dir =true;
+            rot =false;
+        }
+        else {
+            dir =false;
+            rot =false;
+        }
+
+        if(dir){
+            add *= -1;
+        }
+        
+        sec= sec+add;
+
+        clearInterval(interval);
+        }, 0);
+        
+
+        
+        
+    }    
+
+    function draw(sec){
+
+        
+
+   
+}
+  
+</script>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style type="text/css">
+
+
+    /*  
+    david
+    */
+    
+    .david {
+    animation-name: move_david;
+    animation-duration: 6s; /*한번 재생걸리는시간*/
+    animation-delay: 1s; /*애니메이션 지연*/
+    animation-direction: alternate; /* 애니메이션 재생방향 alternate :순방향, reverse: 역방향*/
+    animation-iteration-count: infinite; /* 애니메이션 재생횟수 infinite 무한*/
+    animation-play-state: running; /* 애니메이션 재생여부  running :재생 (기본값), paused(애니메이션정지)*/
+    animation-timing-function: linear; /*애니메이션 가속도 설정 linear, ease, ease-in, ease-out, custom 등*/
+    animation-fill-mode: forwards;/* forwards:애니메이션이 끝날 때 요소의 마지막 키 프레임의 스타일 값을 유지, backwards:첫 번째 키 프레임에 의해 설정된 스타일 값을 얻음, both:애니메이션이 시작되기 전에 첫 번째 키 프레임에서 설정 한 스타일 값을 가져 오도록하고 애니메이션이 끝날 때 마지막 키 프레임의 스타일 값을 유지 */
+    }
+    
+
+    @keyframes move_david {
+        10%{
+            transform: translate(50px, 0px);
+        }
+        25%{
+            transform: rotate(45deg);
+        }
+        
+        50%{
+            transform: translate(150px, 250px);
+        }
+        90%{
+            transform: translate(-100px, 0px);
+        }
+        100%{
+            transform: translate(100px, 50px);
+        }
+        
+    }
+    .david.active2 {
+       
+        transform:rotate(-20deg); transition:transform 2s;
+       
+    }
+    .david.active3 {
+        animation-play-state: running;
+    }
+    .david.active4 {
+        animation-play-state: running;
+    }
+    
+    
+    /*
+    wall
+    */
+    #f{
+        width: 1100px;
+        height: 1100px;
+        position: fixed;
+        left: 300px;
+        top: 100px;
+        border: 2px solid brown;
+    }
+    
+    .wall {
+    animation-name: move_wall;
+    animation-duration: 360s; /*한번 재생걸리는시간*/
+    animation-delay: 1s; /*애니메이션 지연*/
+    animation-direction: alternate; /* 애니메이션 재생방향 alternate :순방향, reverse: 역방향*/
+    animation-iteration-count: 1; /* 애니메이션 재생횟수 infinite 무한*/
+    animation-play-state: running; /* 애니메이션 재생여부  running :재생 (기본값), paused(애니메이션정지)*/
+    animation-timing-function: linear; /*애니메이션 가속도 설정 linear, ease, ease-in, ease-out, custom 등*/
+    animation-fill-mode: forwards;/* forwards:애니메이션이 끝날 때 요소의 마지막 키 프레임의 스타일 값을 유지, backwards:첫 번째 키 프레임에 의해 설정된 스타일 값을 얻음, both:애니메이션이 시작되기 전에 첫 번째 키 프레임에서 설정 한 스타일 값을 가져 오도록하고 애니메이션이 끝날 때 마지막 키 프레임의 스타일 값을 유지 */
+    }
+    
+
+    @keyframes move_wall {
+        
+
+        100%{
+            transform: rotate(-3600deg);
+        }
+        
+    }
+
+    .tree {
+    animation-name: move_tree;
+    animation-duration: 5s; /*한번 재생걸리는시간*/
+    animation-delay: 0.1s; /*애니메이션 지연*/
+    animation-direction: alternate; /* 애니메이션 재생방향 alternate :순방향, reverse: 역방향*/
+    animation-iteration-count: infinite; /* 애니메이션 재생횟수 infinite 무한*/
+    animation-play-state: running; /* 애니메이션 재생여부  running :재생 (기본값), paused(애니메이션정지)*/
+    animation-timing-function: linear; /*애니메이션 가속도 설정 linear, ease, ease-in, ease-out, custom 등*/
+    animation-fill-mode: forwards;/* forwards:애니메이션이 끝날 때 요소의 마지막 키 프레임의 스타일 값을 유지, backwards:첫 번째 키 프레임에 의해 설정된 스타일 값을 얻음, both:애니메이션이 시작되기 전에 첫 번째 키 프레임에서 설정 한 스타일 값을 가져 오도록하고 애니메이션이 끝날 때 마지막 키 프레임의 스타일 값을 유지 */
+    }
+    
+
+    @keyframes move_tree {
+        50%{
+            transform: rotate(1deg);
+        }
+
+        100%{
+            transform: rotate(-1deg);
+        }
+        
+    }
+   
+    .container{
+        width: 1000px;
+        height: 1000px;
+        
+    }
+    figure{
+        display: block;
+        position:absolute;
+        
+    }
+    .tree {
+        
+        top: 20%;
+        left: 15%;
+    }
+    .david {
+        
+        width: 15%;
+        top: 20%;
+        left: 52%;
+    }
+    .wall{
+        top: 43%;
+        left: 40%;
+    }
+
+    .david img{
+        width: 70%;
+       
+    }
+    .tree img{
+        width :60%;
+    }
+    .wall img{
+        width :100%;
+    }
+    
+
+</style>
+<body>
+    <script>
+        var po = $(".david").offset();
+        if(po.top>=100){
+            po.top= 200;
+        }
+    </script>
+    <div id="f">
+    </div>
+    <div class ="container">
+        <figure class="david">
+            <img src="images/david.png">
+        </figure>
+        <figure class="wall">
+            <img src="images/wall2.jpeg">
+        </figure>
+        <figure class="tree">
+            <img src="images/palm.png">
+        </figure>
+    
+</div>
+</body>
+</html>
